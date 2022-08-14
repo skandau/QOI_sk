@@ -38,6 +38,12 @@ performance (but it's still very fast).
 If this is a limitation for your use case, please look into any of the other 
 implementations listed below.
 
+## Comparisons with original QOI
+              original size    original QOI        QOI_sk
+dice.png      226,933 bytes `  519,653 bytes       469,346 bytes
+fish.png      447,419 bytes    1,132,407 bytes     891,294 bytes
+qoi_logo.png  16,605 bytes     16,488 bytes        15,618 bytes
+images come from qoi test set images on qoi homepage 
 
 ## Improvements, New Versions and Contributing
 
