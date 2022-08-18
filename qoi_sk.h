@@ -429,7 +429,7 @@ void *qoi_encode(const void *data, const qoi_desc *desc, int *out_len) {
 		px.rgba.b = pixels[px_pos + 2];
 
 		if (channels == 4) {
-			px.rgba.a = pixels[px_pos + 3]>>1;
+			px.rgba.a = ((pixels[px_pos + 3]>>1)<<1)|1;
 		}
         
 		if (px.v == px_prev.v ) {
@@ -449,7 +449,7 @@ void *qoi_encode(const void *data, const qoi_desc *desc, int *out_len) {
 
 			index_pos = QOI_COLOR_HASH(px) % 64;
 
-			if (index[index_pos].v == px.v )  {
+			if (index[index_pos].v == px.v)  {
 					bytes[p++] = QOI_OP_INDEX | index_pos;
 			}
 			else {
@@ -602,7 +602,7 @@ void *qoi_decode(const void *data, int size, qoi_desc *desc, int channels) {
 		pixels[px_pos + 2] = px.rgba.b;
 		
 		if (channels == 4) {
-			pixels[px_pos + 3] = px.rgba.a<<1;
+			pixels[px_pos + 3] = ((px.rgba.a<<1)>>1)|1;
 		}
 	}
 
